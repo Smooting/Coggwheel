@@ -1,2 +1,2 @@
 # Coggwheel
-For the development and dissemination of Physics, and anything else that may come along. 
+For the development and dissemination of Physics, and anything else that may be of interest.
