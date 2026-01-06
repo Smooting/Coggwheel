@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'Lexend',sans-serif;
 }
 
 * {
@@ -17,4 +18,17 @@ picture,
 svg {
   max-width: 100%;
   display: block;
+}
+
+h1 {
+  background-color: #005244;
+}
+
+div {
+  color: white;
+  background-color: black;
+}
+
+p {
+  background-color: beige;
 }
