@@ -1,34 +1,149 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  font-family: 'Lexend',sans-serif;
-}
+@layer global, component, utility;
 
-* {
-  margin: 0;
-}
+@layer global {
+  /* lexend-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Lexend";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/lexend-v26-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* lexend-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Lexend";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/lexend-v26-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
 
-a {
-  text-decoration: none;
-}
+  /* Fonts */
+  :root {
+    --fs-14: calc(14 / 16 * 1rem);
+    --fs-16: calc(16 / 16 * 1rem);
+    --fs-24: calc(24 / 16 * 1rem);
+    --fs-36: calc(36 / 16 * 1rem);
+    --fs-42: calc(42 / 16 * 1rem);
+    --fs-48: calc(48 / 16 * 1rem);
+    --fs-72: calc(72 / 16 * 1rem);
 
-img,
-picture,
-svg {
-  max-width: 100%;
-  display: block;
-}
+    --font-size-topnav: var(--fs-14);
+    --font-size-h1: var(--fs-42);
+    --font-size-h2: var(--fs-36);
+    --font-size-h3: var(--fs-24);
 
-h1 {
-  background-color: #005244;
+    @media (width >= calc(600 / 16 * 1rem)) {
+      --font-size-topnav: var(--fs-16);
+      --font-size-h1: var(--fs-72);
+      --font-size-h2: var(--fs-48);
+    }
+  }
+
+  /*Colours*/
+  :root {
+    --c-cogg: hsl(170, 100%, 16%);
+    --c-white: hsl(0, 0%, 100%);
+    --c-cogglight: hsl(112, 22%, 74%);
+    --c-red: hsl(341, 61%, 28%);
+    --c-yellow: hsl(43, 100%, 48%);
+    --c-gray-dark: hsl(233, 14%, 25%);
+    --c-beige: hsl(43, 56%, 90%);
+    --c-transparent: transparent;
+
+    --colour-main-bg: var(--c-cogg);
+    --colour-text-light: var(--c-white);
+    --colour-text-dark: var(--c-gray-dark);
+    --colour-button-primary-bg: var(--c-yellow);
+    --colour-button-primary-text: var(--c-gray-dark);
+    --colour-button-secondary-bg: var(--c-transparent);
+    --colour-button-secondary-border: var(--c-white);
+    --colour-button-secondary-text: var(--c-white);
+    --colour-fullwidth-bg: var(--c-red);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    font-family: "Lexend", sans-serif;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+    font-family: "Lexend", sans-serif;
+    line-height: 1.3;
+    color: var(--colour-text-dark);
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+    background-color: var(--c-cogg);
+    color: var(--c-white);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  picture,
+  svg {
+    max-width: 100%;
+    display: block;
+  }
+
+  .wrapper {
+    width: min(calc(100% - 48px), calc(1200 / 16 * 1rem));
+    margin-inline: auto;
+  }
 }
 
 div {
   color: white;
-  background-color: black;
+  background-color: var(--c-cogglight);
 }
 
 p {
-  background-color: beige;
+  background-color: var(--c-beige);
+}
+
+@layer component {
+}
+
+@layer utility {
+  .visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    &.skip:focus {
+      left: 0;
+      width: auto;
+      height: auto;
+      background: var(--c-white);
+      padding: 10px;
+      border: 1px solid;
+    }
+  }
 }
