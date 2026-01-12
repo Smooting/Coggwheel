@@ -54,6 +54,7 @@
     --colour-main-bg: var(--c-cogg);
     --colour-text-light: var(--c-white);
     --colour-text-dark: var(--c-gray-dark);
+    --colour-header-bg: var(--c-cogg);
     --colour-button-primary-bg: var(--c-yellow);
     --colour-button-primary-text: var(--c-gray-dark);
     --colour-button-secondary-bg: var(--c-transparent);
@@ -87,8 +88,6 @@
 
   h1 {
     font-size: var(--font-size-h1);
-    background-color: var(--c-cogg);
-    color: var(--c-white);
   }
 
   h2 {
@@ -108,6 +107,7 @@
   svg {
     max-width: 100%;
     display: block;
+    height: auto; /*ensures aspect ratio is maintained*/
   }
 
   .wrapper {
@@ -116,16 +116,66 @@
   }
 }
 
-div {
-  color: white;
-  background-color: var(--c-cogglight);
-}
-
-p {
-  background-color: var(--c-beige);
-}
-
 @layer component {
+  .topnav {
+    background-color: var(--colour-header-bg);
+
+    .topnav__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 5px;
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        padding-block: 10px;
+      }
+    }
+
+    .topnav__homelink {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    .topnav__logo {
+      width: calc(80 / 16 * 1rem);
+
+      @media (width >= calc(600 / 16 * 1rem)) {
+        width: calc(120 / 16 * 1rem);
+      }
+    }
+
+    .topnav__item {
+    }
+
+    .topnav__links {
+      display: flex;
+      gap: 20px;
+      list-style-type: none;
+      padding: 0;
+      @media (width >= calc(600 / 16 * 1rem)) {
+        gap: 40px;
+      }
+    }
+
+    .topnav__link {
+      font-size: var(--font-size-topnav);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--c-beige);
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 4px;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  p {
+    background-color: var(--c-beige);
+  }
 }
 
 @layer utility {
